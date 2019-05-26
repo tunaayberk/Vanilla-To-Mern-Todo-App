@@ -1,0 +1,22 @@
+{
+  "name": "to-do-mern-app",
+  "version": "1.0.0",
+  "description": "Vanilla JS to MERN Application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tunaayberk/Vanilla-To-Mern-Todo-App.git"
+  },
+  "author": "Tuna Ayberk Ozmen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tunaayberk/Vanilla-To-Mern-Todo-App/issues"
+  },
+  "homepage": "https://github.com/tunaayberk/Vanilla-To-Mern-Todo-App#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
