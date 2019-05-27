@@ -1,4 +1,4 @@
-var removeSVG = `<svg
+export const removeSVG = `<svg
 version='1.1'
 xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -43,7 +43,7 @@ xml:space="preserve"
 </g>
 </svg>`;
 
-var completeSVG = `<svg
+export const completeSVG = `<svg
 version="1.1"
 xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -62,64 +62,3 @@ c0.3-0.3,0.8-0.3,1.1,0s0.3,0.8,0,1.1l-5.3,5.3C10.1,14.3,9.9,14.4,9.7,14.4z"
   />
 </g>
 </svg>`;
-
-//User clicked on the add button
-//if there is any text inside the input field, add that to the todo list
-document.getElementById("add").addEventListener("click", function() {
-  var value = document.getElementById("item").value;
-  if (value) {
-    addItemTodo(value);
-    document.getElementById("item").value = "";
-  }
-});
-
-function removeItem(e) {
-  var item = this.parentNode.parentNode;
-  var parent = item.parentNode;
-
-  parent.removeChild(item);
-}
-
-function completeItem(e) {
-  var item = this.parentNode.parentNode;
-  var parent = item.parentNode;
-  var id = parent.id;
-
-  var target =
-    id === "todo"
-      ? document.getElementById("completed")
-      : document.getElementById("todo");
-
-  target.insertBefore(item, target.childNodes[0]);
-  parent.removeChild(item);
-}
-
-function addItemTodo(text) {
-  var list = document.getElementById("todo");
-
-  var item = document.createElement("li");
-  item.innerText = text;
-
-  var buttons = document.createElement("div");
-  buttons.classList.add("buttons");
-
-  var remove = document.createElement("button");
-  remove.classList.add("remove");
-  remove.innerHTML = removeSVG;
-
-  // Add click event for removing item
-  remove.addEventListener("click", removeItem);
-
-  var complete = document.createElement("button");
-  complete.classList.add("complete");
-  complete.innerHTML = completeSVG;
-
-  // Add click event for complete item
-  complete.addEventListener("click", completeItem);
-
-  buttons.appendChild(remove);
-  buttons.appendChild(complete);
-  item.appendChild(buttons);
-
-  list.insertBefore(item, list.childNodes[0]);
-}
