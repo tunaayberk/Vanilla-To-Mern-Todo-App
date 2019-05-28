@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
-import { removeSVG, completeSVG } from "./icons";
 
 class Header extends Component {
   state = {
@@ -38,7 +37,9 @@ class Header extends Component {
             placeholder="Enter a task"
             id="item"
           />
-          <button id="add" onClick={this.addTodoItem} />
+          <button id="add" onClick={this.addTodoItem}>
+            <i class="material-icons">add</i>
+          </button>
         </header>
       </>
     );

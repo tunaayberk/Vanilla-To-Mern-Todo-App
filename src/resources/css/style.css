@@ -76,18 +76,17 @@ header button {
   appearance: none;
 }
 
-header button svg {
+header button i {
   width: 16px;
   height: 16px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -8px 0 0 -8px;
+  top: 24%;
+  left: 24%;
+  margin: 0 auto;
+  font-size: 28px !important;
+  color: #25b99a;
 }
 
-header button svg .fill {
-  fill: #25b99a;
-}
 .container {
   width: 100%;
   float: left;
@@ -154,58 +153,43 @@ ul.todo li .buttons button:last-of-type:before {
   background: #edf0f1;
 }
 
-ul.todo li .buttons button svg {
+ul.todo li .buttons button i {
   width: 22px;
   height: 22px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin: -11px 0 0 -11px;
+  font-size: 20px !important;
 }
 
-ul.todo li .buttons button.complete svg {
+ul.todo li .buttons button.complete i {
   border-radius: 11px;
   border: 1.5px solid #25b99a;
-
+  color: #25b99a;
   -webkit-transition: background 0.2s ease;
   -moz-transition: background 0.2s ease;
   transition: background 0.2s ease;
 }
+ul.todo li .buttons button.remove i {
+  color: gray;
+  -webkit-transition: color 0.2s ease;
+  -moz-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+ul.todo:not(#remove) li .buttons button.remove:hover i {
+  color: red;
+}
 
-ul.todo#completed li .buttons button.complete svg {
+ul.todo#completed li .buttons button.complete i {
   background: #25b99a;
+  color: white;
   border: 0px;
 }
 
-ul.todo:not(#completed) li .buttons button.complete:hover svg {
+ul.todo:not(#completed) li .buttons button.complete:hover i {
   background: rgba(37, 185, 154, 0.75);
-}
-
-ul.todo:not(#completed) li .buttons button.complete:hover svg .fill {
-  fill: #fff;
-}
-
-ul.todo#completed li .buttons button.complete svg .fill {
-  fill: #fff;
-}
-
-ul.todo li .buttons button svg .fill {
-  -webkit-transition: fill 0.2s ease;
-  -moz-transition: fill 0.2s ease;
-  -o-transition: fill 0.2s ease;
-  transition: fill 0.3s ease;
-}
-
-ul.todo li .buttons button.remove svg .fill {
-  fill: #c0cecb;
-}
-
-ul.todo li .buttons button.remove:hover svg .fill {
-  fill: #e85565;
-}
-
-ul.todo li .buttons button.complete svg .fill {
-  fill: #25b99a;
+  color: white;
 }
 
 ul.todo#completed:not(:empty) {
