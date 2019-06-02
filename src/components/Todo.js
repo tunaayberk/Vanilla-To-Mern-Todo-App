@@ -2,27 +2,42 @@ import React, { Component } from "react";
 import Item from "./Item";
 
 export default class Todo extends Component {
+  state = {
+    todos: []
+  };
+
+  componentWillReceiveProps() {
+    console.log("props[Todo.js]", this.props);
+    let stateTodos = this.state.todos;
+    stateTodos.push(this.props.todo);
+    this.setState({ todos: stateTodos });
+  }
+
   toggleTodoItem = itemId => {
-    const newTodos = (this.props.todos.find(
-      item => item.id === itemId
-    ).status = !this.props.todos.find(item => item.id === itemId).status);
-    this.setState({ todos: newTodos });
+    let { todos } = this.state;
+    const toogleTodo = todos.map(todo => {
+      if (todo.id == itemId) {
+        todo.status = !todo.status;
+        return todo;
+      } else {
+        return todo;
+      }
+    });
+
+    this.setState({ todos: toogleTodo });
   };
 
   deleteTodoItem = itemId => {
-    const delTodos = this.props.todos.filter(item => item.id !== itemId);
-    console.log("sad", delTodos);
+    const delTodos = this.state.todos.filter(({ id }) => id !== itemId);
     this.setState({ todos: delTodos });
-    console.log("state after", this.state);
   };
 
   render() {
-    const { todos } = this.props;
+    const { todos } = this.state;
     return (
       <div className="container">
         <ul className="todo" id="todo">
-          {todos.map(todo => {
-            const { id, text, status } = todo;
+          {todos.map(({ id, text, status }) => {
             if (status) {
               return (
                 <>
@@ -39,8 +54,7 @@ export default class Todo extends Component {
           })}
         </ul>
         <ul className="todo" id="completed">
-          {todos.map(todo => {
-            const { id, text, status } = todo;
+          {todos.map(({ id, text, status }) => {
             if (!status) {
               return (
                 <>

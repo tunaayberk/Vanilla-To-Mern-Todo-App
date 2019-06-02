@@ -4,23 +4,21 @@ import Todo from "./Todo";
 
 class App extends Component {
   state = {
-    todos: []
+    todo: {}
   };
 
   addTodoItem = todoInput => {
-    const { todos } = this.state;
-    let tempArr = [...todos];
-    tempArr.push(todoInput);
-    this.setState({ todos: tempArr });
+    this.setState({ todo: todoInput });
+    console.log("addTodoItem[App.js] Push", this.state.todo);
   };
 
   render() {
-    console.log(this.state);
+    console.log("this.state[App.js]", this.state);
     return (
       <>
         <Header addTodoItem={this.addTodoItem} />
 
-        <Todo todos={this.state.todos} />
+        <Todo todo={this.state.todo} />
       </>
     );
   }
